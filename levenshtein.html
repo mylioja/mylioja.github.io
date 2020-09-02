@@ -59,6 +59,16 @@ The intended use-case was to compare the similarity between spellings of Finnish
 My implementation is based on the classic <a href="https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm">Wagner–Fischer algorithm</a>,
 but it completely avoids dynamic memory allocation, and uses only a modest amount of stack space. 
 </p>
+<p>
+The repository contains also an implementation of the original Wagner-Fischer algorithm.
+It's sort of self-verifying because it can apply the computed shortest edit sequence to the original source word,
+and see that the result matches the expected target word.
+I use it as a "gold standard" to verify the correctness of my own adaptation of the algorithm.
+</p>
+<p>For a clear and detailed step by step, explanation of the Wagner–Fischer algorithm, I recommend these
+<a href="http://www.cs.jhu.edu/~langmea/resources/lecture_notes/dp_and_edit_dist.pdf">slides by Ben Langmead</a>.
+It's one of the best explanations I have ever seen on the subject.
+</p>
 <p><a href="https://github.com/mylioja/levenshtein">To the code repository</a></p>
 </div>
 </div>

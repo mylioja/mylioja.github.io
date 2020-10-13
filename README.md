@@ -1,6 +1,5 @@
 # Martti Ylioja
 
-Now on GitHub as: https://github.com/mylioja
+I now have GitHub pages in here: https://martti.ylioja.com/
 
-Experimenting with GitHub pages using the Clean Blog theme https://startbootstrap.com/themes/clean-blog/ from Start Bootstrap.
-Check the result in here https://martti.ylioja.com/
+The page style and layout is based on the Clean Blog theme https://startbootstrap.com/themes/clean-blog/ from Start Bootstrap.

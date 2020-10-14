@@ -47,8 +47,10 @@
 </div>
 </header>
 
-<!-- Main Content -->
+<!-- Begin Main Content -->
 <div class="container">
+
+<!-- Begin a post -->
 <div class="row">
 <div class="col-lg-8 col-md-10 mx-auto">
 <div class="post-preview">
@@ -69,6 +71,41 @@ but it completely avoids dynamic memory allocation, and uses only a modest amoun
 </div>
 </div>
 </div>
+
+<!-- Begin a post -->
+<div class="row">
+<div class="col-lg-8 col-md-10 mx-auto">
+<div class="post-preview">
+<h2 class="post-title">Cleaning up invisble whitespace</h2>
+<h3 class="post-subtitle">My new tool to normalize whitespaces and line endings in source files.</h3>
+<p>I like my sources to have:</p>
+<ul>
+<li>Only 7-bit ASCII characters</li>
+<li>Only Unix style <code>'\n'</code> line endings, never <code>'\r'</code> or <code>"\r\n"</code></li>
+<li>No tabs <code>'\t'</code></li>
+<li>Only good old spaces <code>' '</code> for spacing</li>
+<li>No trailing spaces at the ends of lines</li>
+<li>A line feed <code>'\n'</code> as the last character of the file</li>
+</ul>
+<p>So, as any decent software would do, I started writing a small tool to detect and optionally fix these issues in my source files.</p>
+<h4>The project didn't stay so simple for long.</h4>
+<p>It started as a very simple program, but then got the bright idea
+to use this as an opportunity to experiment with some techniques I have lately wanted to try.</p>
+<p>Here's a list of the additions so far:</p>
+<ul>
+<li>Use the <code>recursive_directory_iterator</code> to scan directories</li>
+<li>Handle command line parsing in a reusable way</li>
+<li>Follow GNU and Posix conventions</li>
+<li>Release under <code>GPL-3.0-or-later</code></li>
+<li>Reliably recognize UTF-16 encoded source text</li>
+</ul>
+<p><a href="https://github.com/mylioja/SourceNormalizer">You can find more info, and the code in here</a></p>
+<p class="post-meta">Posted by Martti Ylioja on October 14, 2020</p>
+</div>
+</div>
+</div>
+
+<!-- End Main Content -->
 </div>
 
 <!-- Footer -->

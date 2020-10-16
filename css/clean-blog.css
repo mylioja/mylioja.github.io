@@ -16,7 +16,8 @@ p {
 }
 
 p a {
-  text-decoration: underline;
+  color: blue;
+  text-decoration: none;
 }
 
 h1,
@@ -30,7 +31,7 @@ h6 {
 }
 
 a {
-  color: #212529;
+  color: blue;
   transition: all 0.2s;
 }
 

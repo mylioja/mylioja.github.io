@@ -54,6 +54,33 @@
 <div class="row">
 <div class="col-lg-8 col-md-10 mx-auto">
 <div class="post-preview">
+<h2 class="post-title">Deflate decompressor in pure C++</h2>
+<h3 class="post-subtitle">Pure C++ implementation of the decompression side of the DEFLATE compression method.</h3>
+<p>As you may have guessed, this is yet another subproject of my Optical Character Reader (OCR) project.</p>
+<p>I usually use the <a href="http://zlib.net/"><code>zlib</code></a>
+by Jean-loup Gailly and Mark Adler for all my compression and decompression needs.
+It's reliable, fast, and has an API that makes it easy to use for all possible scenarios.
+The only drawback is that under Windows, one has to go to some extra trouble to make the library available.
+The zlib headers or the library itself aren't part of the default package of libraries available under the Windows environment.</p>
+<p>My implementation is a single C++ class completely contained in two files:
+<ul>
+<li>The header file <code>deflate_decompressor.h</code> and</li>
+<li>the implementation file <code>deflate_decompressor.cpp</code></li>
+</ul>
+It doesn't rely on any external non-standard libraries, so it can easily be included in any C++ project.</p>
+<p>It's intended for a use-case where both the compressed input, and the uncompressed output are small enough
+to comfortably fit in memory at the same time.
+</p>
+<p><a href="https://github.com/mylioja/deflate_decompressor">More info, and the code, is here...</a></p>
+<p class="post-meta">Posted by Martti Ylioja on November 10, 2020</p>
+</div>
+</div>
+</div>
+
+<!-- Begin a post -->
+<div class="row">
+<div class="col-lg-8 col-md-10 mx-auto">
+<div class="post-preview">
 <h2 class="post-title">Cleaning up invisible whitespace</h2>
 <h3 class="post-subtitle">My new tool to normalize whitespaces and line endings in source files.</h3>
 <p>I like my sources to have:</p>

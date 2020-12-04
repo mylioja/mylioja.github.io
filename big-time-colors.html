@@ -37,7 +37,7 @@ body {
   color: var(--selected-text-color);
   background-color: var(--selected-bg-color);
   padding: 0px;
-  border: 1px solid #767676;
+  border: 2px solid #767676;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -59,6 +59,8 @@ a:hover {text-decoration: underline;}
 a:active {text-decoration: underline;}
 </style>
 <script>
+var timer = null;
+var minute = 99;
 var colorPicker = new iro.ColorPicker('#picker', {
   colors: ['rgb(199, 0, 0)', 'rgb(51, 255, 245)'],
   layoutDirection: "vertical", // "horizontal",
@@ -84,21 +86,43 @@ var colorPicker = new iro.ColorPicker('#picker', {
   ]
 });
 
-function initialize(){
-colorPicker.on(["color:init", "color:change"], function(color) {
-  var rootStyle = document.documentElement.style;
-  var value = null;
-  if (color.index == 0)
+function twodigits(value)
+{
+	var text = '';
+    if (value < 10)
+    {
+    	text = '0';
+	}	
+    text += value.toString();
+    return text;
+}
+
+function on_timer() {
+  var d = new Date();
+  if (minute != d.getMinutes())
   {
-    value = document.getElementById("background");
-    rootStyle.setProperty('--selected-bg-color', color.rgbString);
+    minute = d.getMinutes();
+    document.getElementById("preview").innerHTML =
+      twodigits(d.getHours()) + ':' + twodigits(minute);
   }
-  else {
-    value = document.getElementById("text");
-    rootStyle.setProperty('--selected-text-color', color.rgbString);
-  }
-  value.innerHTML = color.rgbString;
-});
+}
+
+function initialize() {
+  colorPicker.on(["color:init", "color:change"], function(color) {
+    var rootStyle = document.documentElement.style;
+    var value = null;
+    if (color.index == 0)
+    {
+      value = document.getElementById("background");
+      rootStyle.setProperty('--selected-bg-color', color.rgbString);
+    }
+    else {
+      value = document.getElementById("text");
+      rootStyle.setProperty('--selected-text-color', color.rgbString);
+    }
+    value.innerHTML = color.rgbString;
+  });
+  timer = setInterval(on_timer, 1000);
 }
 </script>
 </head>

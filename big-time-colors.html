@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content='Color picker for the Big-Time" screensaver'>
+<meta name="author" content="Martti Ylioja">
+<title>'Colors for the Big-Time" screensaver'</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100013580-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-100013580-1');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+<style> 
+:root {
+  --selected-bg-color: #c70000;
+  --selected-text-color: #33fff5;
+}
+
+@font-face {
+   font-family: abril;
+   src: url(fonts/AbrilFatface-Regular.otf);
+}
+
+body {
+  background-color: #151F43;
+  color: white;
+  font-family: Verdana;
+  font-size: 16px;
+}
+
+#preview {
+  font-family: abril;
+  color: var(--selected-text-color);
+  background-color: var(--selected-bg-color);
+  padding: 0px;
+  border: 1px solid #767676;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 220px;
+  width: 640px;
+  max-width: 640px;
+  height: 320px;
+}
+
+#picker {width: 320px; max-width: 320px;}
+.box { display: flex; height: 420px; flex-direction: row; flex-wrap: wrap;}
+.item {flex: 1 1 640px; margin: 20px;}
+.break {flex-basis: 100%; height: 0;}
+h1 {margin: 20px;}
+p {margin: 4px 0px;}
+a:link {text-decoration: none; color: cyan;}
+a:visited {text-decoration: none; color: lightblue;}
+a:hover {text-decoration: underline;}
+a:active {text-decoration: underline;}
+</style>
+<script>
+var colorPicker = new iro.ColorPicker('#picker', {
+  colors: ['rgb(199, 0, 0)', 'rgb(51, 255, 245)'],
+  layoutDirection: "vertical", // "horizontal",
+  layout: [
+    {
+      component: iro.ui.Wheel,
+      options: {}
+    },
+    {
+      component: iro.ui.Slider,
+      options: {
+        sliderType: 'value',
+        activeIndex: 0,
+      }
+    },
+    {
+      component: iro.ui.Slider,
+      options: {
+        sliderType: 'value',
+        activeIndex: 1,
+      }
+    },
+  ]
+});
+
+function initialize(){
+colorPicker.on(["color:init", "color:change"], function(color) {
+  var rootStyle = document.documentElement.style;
+  var value = null;
+  if (color.index == 0)
+  {
+    value = document.getElementById("background");
+    rootStyle.setProperty('--selected-bg-color', color.rgbString);
+  }
+  else {
+    value = document.getElementById("text");
+    rootStyle.setProperty('--selected-text-color', color.rgbString);
+  }
+  value.innerHTML = color.rgbString;
+});
+}
+</script>
+</head>
+</body>
+<body onload="initialize();">
+<h1>Color picker for my "Big-Time" screensaver</h1>
+<div class="box">
+  <div id="preview" class="item">13:49</div>
+  <div id="picker" class="item"></div>
+  <div class="break"></div>
+  <div class="item">
+    <p>Background: <span id="background"></span></p>
+    <p>Text: <span id="text"></span></p>
+    <br>
+    <p>Digits font is <a href="https://www.type-together.com/abril-font">Abril Fatface Regular</a> by Veronika Burian & José Scaglione.</p>
+    <p>The <a href="https://iro.js.org/">"iro.js"</a> color picker widget is by James. <a href="https://github.com/jaames/iro.js">Here's the GitHub page.</a></p>
+  </div>
+</div>
+</html>
